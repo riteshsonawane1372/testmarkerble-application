@@ -1,13 +1,19 @@
-name: Test Robocop
-on: workflow_dispatch
+name: RuboCop
+
+on: worflow_dispatch
+
 jobs:
-    robocop:
-        name: Lint test
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: ruby/setup-ruby@v1
-              with:
-                bundler-cache: true
-            - name: robocop
-              run: bundle exec rubocop --parallel
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+    - name: Install dependencies
+      run: |
+        gem install rubocop
+    - name: Run RuboCop
+      run: rubocop
