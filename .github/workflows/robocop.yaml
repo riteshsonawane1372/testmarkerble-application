@@ -1,0 +1,13 @@
+name: Test Robocop
+on: workflow_dispatch
+jobs:
+    robocop:
+        name: Lint test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ruby/setup-ruby@v1
+              with:
+                bundler-cache: true
+            - name: robocop
+              run: bundle exec rubocop --parallel
