@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
-
+ruby "3.2.2"
+gem "robocop"
 # Use main development branch of Rails
 gem "rails", github: "rails/rails", branch: "main"
 
