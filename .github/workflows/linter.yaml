@@ -1,9 +1,6 @@
 # Worflow example
 name: CI
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build:
@@ -13,6 +10,6 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Rubocop checks
-      uses: andrewmcodes/rubocop-linter-action@v3.3.0
+      uses: luizfonseca/github-actions-rubocop@1.5.6
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
