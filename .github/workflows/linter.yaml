@@ -9,11 +9,12 @@ jobs:
 
     - uses: actions/checkout@v1
     - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.2.2
+      run: |
+        sudo apt-get update && sudo apt-get install ruby-dev
 
-    - name: Install gem 
-      uses: luizfonseca/github-actions-rubocop@1.5.6
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install Rubocop
+      run: |
+        gem install rubocop
+    - name: Run Rubocop
+      run: |
+        robucop
