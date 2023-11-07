@@ -17,4 +17,4 @@ jobs:
         sudo gem install rubocop
     - name: Run Rubocop
       run: |
-        robucop
+        rubocop
