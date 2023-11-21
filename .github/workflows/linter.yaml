@@ -1,20 +1,14 @@
 # Worflow example
-name: CI
-on: [push]
 
+name: test-new
+on: workflow_dispatch
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-
-    - uses: actions/checkout@v1
-    - name: Setup Ruby
-      run: |
-        sudo apt-get update && sudo apt-get install ruby-dev
-
-    - name: Install Rubocop
-      run: |
-        sudo gem install rubocop
-    - name: Run Rubocop
-      run: |
-        rubocop
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        with:
+          ruby-version: '3.2.2' # Not needed with a .ruby-version file
+      - run: bundle install
+      - run: bundle exec rubocop
