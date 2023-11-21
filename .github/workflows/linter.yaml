@@ -4,29 +4,16 @@ on: workflow_dispatch
 
 
 jobs:
-
   build:
-
     name: Rubocop Linting
-
     runs-on: ubuntu-latest
-
     steps:
-
     - name: Code Checkout
-
       uses: actions/checkout@v3
-
     - name: Install Ruby
-
       uses: ruby/setup-ruby@v1
-
       with: 
-
         ruby-version: 3.2.2
-
-        bundler-cache: true
-
+        # bundler-cache: true
     - name: Run Rubocop
-
       run: bundle exec rubocop -P
