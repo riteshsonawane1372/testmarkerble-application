@@ -8,6 +8,10 @@ jobs:
     name: Rubocop Linting
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
+    - name: Setup Ruby
+      run: |
+        sudo apt-get update && sudo apt-get install ruby-dev
     - name: Code Checkout
       uses: actions/checkout@v3
     - name: Install Ruby
