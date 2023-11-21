@@ -21,5 +21,7 @@ jobs:
         # bundler-cache: true
     - name: Install Rubocop
       run: sudo apt-get update && sudo apt-get install rubocop
+    - name: Bundle Install 
+      run: bundle install
     - name: Run Rubocop
       run: bundle exec rubocop -P
