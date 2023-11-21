@@ -1,15 +1,6 @@
 name: Lint testing
 
-on:
-
-    push:
-
-        branches:
-
-            - develop
-
-            - pre-production
-
+on: workflow_dispatch
 
 
 jobs:
