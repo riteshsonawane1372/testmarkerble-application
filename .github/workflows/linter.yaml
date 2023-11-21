@@ -15,7 +15,7 @@ jobs:
       with: 
         ruby-version: 3.2.2
         # bundler-cache: true
-    - name: gem Install
-      run: gem install rubocop
+    - name: Install Rubocop
+      run: sudo apt-get update && sudo apt-get install rubocop
     - name: Run Rubocop
       run: bundle exec rubocop -P
