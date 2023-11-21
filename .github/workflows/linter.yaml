@@ -15,5 +15,7 @@ jobs:
       with: 
         ruby-version: 3.2.2
         # bundler-cache: true
+    - name: Bundle Install
+      run: bundle install
     - name: Run Rubocop
       run: bundle exec rubocop -P
