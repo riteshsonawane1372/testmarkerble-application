@@ -1,11 +1,23 @@
 name: RuboCop
 
 on: workflow_dispatch
+
 jobs:
-  build:
+  rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Rubocop checks
-      uses: prozsolt/rubocop-github-action@master
-            
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0' # Specify your desired Ruby version
+
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+
+    - name: Run RuboCop
+      run: bundle exec rubocop
