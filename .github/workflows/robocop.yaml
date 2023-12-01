@@ -1,16 +1,25 @@
 name: RuboCop
 
 on: workflow_dispatch
-
 jobs:
-  rubocop:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-    - name: Bundle Install
-      run: bundle install
-    - name: Run rubocop
-      run: bundle exec rubocop -P
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.5 
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.2.2 # Replace with your ruby version
+    - name: Gems Cache
+      id: gem-cache
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Rubocop Linter Action
+      uses: andrewmcodes/rubocop-linter-action@v3.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
