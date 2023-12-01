@@ -16,6 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         gem install bundler
+        gem install rubocop
         bundle config path vendor/bundle
         bundle update debug
         bundle install --jobs 4 --retry 3
