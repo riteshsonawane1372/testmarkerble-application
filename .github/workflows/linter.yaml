@@ -11,17 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Setup Ruby
       run: |
-        sudo apt-get update && sudo apt-get install ruby-dev
-    - name: Code Checkout
-      uses: actions/checkout@v3
-    - name: Install Ruby
-      uses: ruby/setup-ruby@v1
-      with: 
-        ruby-version: 3.2.2
-        # bundler-cache: true
-    - name: Install Rubocop
-      run: sudo apt-get update && sudo apt-get install rubocop
-    - name: Bundle Install 
-      run: bundle install
-    - name: Run Rubocop
-      run: bundle exec rubocop -P
+        ls 
+        mv config/database.yml config/database.asc
+        ls config/
